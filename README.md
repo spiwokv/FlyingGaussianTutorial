@@ -14,7 +14,7 @@ gmx_mpi_d solvate -cp box -cs -o solvated -p AceAlaNme.top
 I used two rounds of energy minimization, 20ps MD at constant volume and 30 K and 200ps MD at constant pressure and 300 K. This was followed by 200ps MD at constant volume and 300 K. I ran equilibrations on 8 cores:
 ```bash
 export OMP_NUM_THREADS=1
-gmx_mpi_d grompp -f em1 -c solvated -p AceAlaNme -o em1 -maxwarn 666
+gmx_mpi_d grompp -f [em1](https://github.com/spiwokv/FlyingGaussianTutorial/blob/master/mdps/em1.mdp) -c solvated -p AceAlaNme -o em1 -maxwarn 666
 mpirun -np 8 gmx_mpi_d mdrun -s em1 -o em1 -e em1 -g em1 -c after_em1
 gmx_mpi_d grompp -f em2 -c after_em1 -p AceAlaNme -o em2 -maxwarn 666
 mpirun -np 8 gmx_mpi_d mdrun -s em2 -o em2 -e em2 -g em2 -c after_em2
