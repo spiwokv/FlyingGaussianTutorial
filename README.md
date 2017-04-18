@@ -1,6 +1,6 @@
 # Flying Gaussian Tutorial on alanine dipeptide
 
-This tutorial shows how to use the Flying Gaussian method in modified Plumed. A favourite molecular toy system alanine dipeptide in water will be used as a model system. First compile Plumed (version 2.2.0 tested) with file /src/bias/MetaD.cpp replaced by this file. Compile with MPI support (I used OpenMPI 2.0.1 compiled with GCC). Next, compile Gromacs (I used version 5.1.1) with Plumed (compile with double precision and again with MPI support). This tutorial assumes you have executables of the Flying-Gaussian-hacked Plumed in your path, otherwise place full path before Gromacs executables.
+This tutorial shows how to use the [Flying Gaussian method](http://dx.doi.org/10.1021/acs.jctc.6b00551) in modified Plumed. A favourite molecular toy system alanine dipeptide in water will be used as a model system. First compile Plumed (version 2.2.0 tested) with file /src/bias/MetaD.cpp replaced by this file. Compile with MPI support (I used OpenMPI 2.0.1 compiled with GCC). Next, compile Gromacs (I used version 5.1.1) with Plumed (compile with double precision and again with MPI support). This tutorial assumes you have executables of the Flying-Gaussian-hacked Plumed in your path, otherwise place full path before Gromacs executables.
 
 The simulation can start from this structure of alanine dipeptide (obtained by deleting and renaming atoms from some protein structure). Topology can be build by:
 ```bash
