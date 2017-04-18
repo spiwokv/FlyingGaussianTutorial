@@ -1,0 +1,17 @@
+integrator          =  steep
+nsteps              =  500000
+emtol               =  0
+emstep              =  0.1
+nstcomm             =  1
+nstxout             =  100
+nstvout             =  100
+nstfout             =  0
+nstlog              =  100
+nstenergy           =  100
+nstlist             =  1
+ns_type             =  grid
+coulombtype         =  PME
+rlist               =  1.4
+rcoulomb            =  1.4
+rvdw                =  1.4
+energygrps          =  System
