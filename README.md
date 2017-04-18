@@ -29,7 +29,7 @@ Snapshots of this simulation (sampled every 10 ps) were used as starting structu
 ```bash
 ./disectit.py
 ```
-Flying Gaussian method was tested with 10-128 walkers. Here is example with 20 walkers (you need 20 CPU cores). It is necessary to generate more starting structures if you want to use more walkers by prolonging the simulation mdv2 and/or modifying the `disectit.py` script. When ready, initialize your MPI for given number of processes and run by:
+Flying Gaussian method was tested with 10-128 walkers. Here is example with 20 walkers (you need 20 CPU cores). It is necessary to generate more starting structures if you want to use more walkers by prolonging the simulation `mdv2` and/or modifying the `disectit.py` script. When ready, initialize your MPI for given number of processes and run by:
 ```bash
 for i in `seq 0 19`;
 do
@@ -50,7 +50,7 @@ After finishing the simulation create a subdirectory `otfr` for on-the-fly rewei
 ```bash
 ./otfr.py
 ```
-It will generate files `fes0.txt` to `fes500.txt` with the progress of calculated free energy surface. They contain three columns: phi-bin number, psi-bin number and free energy (free energy of unpopulated bins is set to maxfe). They can be visualized by this R script by running:
+It will generate files `fes0.txt` to `fes500.txt` with the progress of calculated free energy surface. They contain three columns: phi-bin number, psi-bin number and free energy (free energy of unpopulated bins is set to `maxfe`). They can be visualized by this R script by running:
 ```bash
 R --no-save < getfes.R
 ```
