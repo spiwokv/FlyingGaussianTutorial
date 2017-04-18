@@ -54,7 +54,7 @@ It will generate files `fes0.txt` to `fes500.txt` with the progress of calculate
 ```bash
 R --no-save < getfes.R
 ```
-(they start by `fes001.png`). Evolution of the bias potential can be visualized by [this script](https://github.com/spiwokv/FlyingGaussianTutorial/blob/master/R/getbias.R):
+(they start by `fes001.png`). Evolution of the bias potential can be visualized by [this R script](https://github.com/spiwokv/FlyingGaussianTutorial/blob/master/R/getbias.R):
 ```bash
 R --no-save < getbias.R
 ```
