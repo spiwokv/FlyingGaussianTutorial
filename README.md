@@ -1,12 +1,12 @@
 # Flying Gaussian Tutorial on alanine dipeptide
 
-This tutorial shows how to use the [Flying Gaussian method](http://dx.doi.org/10.1021/acs.jctc.6b00551) in modified [Plumed](http://www.plumed.org). A favourite molecular toy system alanine dipeptide in water will be used as a model system. First compile Plumed (version 2.2.0 tested) with file `/src/bias/MetaD.cpp` replaced by [this file](). Compile with MPI support (I used OpenMPI 2.0.1 compiled with GCC). Next, compile Gromacs (I used version 5.1.1) with Plumed (compile with double precision and again with MPI support). This tutorial assumes you have executables of the Flying-Gaussian-hacked Plumed in your path, otherwise place a full path before Gromacs executables.
+This tutorial shows how to use the [Flying Gaussian method](http://dx.doi.org/10.1021/acs.jctc.6b00551) in modified [Plumed](http://www.plumed.org). A favourite molecular toy system alanine dipeptide in water will be used as a model system. First compile Plumed (version 2.2.0 tested) with file `/src/bias/MetaD.cpp` replaced by [this file](https://github.com/spiwokv/FlyingGaussianTutorial/blob/master/src/bias/MetaD.cpp). Compile with MPI support (I used OpenMPI 2.0.1 compiled with GCC). Next, compile Gromacs (I used version 5.1.1) with Plumed (compile with double precision and again with MPI support). This tutorial assumes you have executables of the Flying-Gaussian-hacked Plumed in your path, otherwise place a full path before Gromacs executables.
 
 The simulation can start from [this structure of alanine dipeptide](https://github.com/spiwokv/FlyingGaussianTutorial/blob/master/mols/AceAlaNme.pdb) (obtained by deleting and renaming atoms from some protein structure). Topology can be build by:
 ```bash
 gmx_mpi_d pdb2gmx -f AceAlaNme.pdb -o AceAlaNme -p AceAlaNme
 ```
-Chose force field 6 (AMBER99SB-ILDN protein, nucleic AMBER94 (Lindorff-Larsen et al...) and water model 1 (TIP3P TIP 3-point, recommended). In fact AMBER99SB and AMBER99-ILDN are identical since the ILDN correction is applied on longer side chains. Next, create a box and fill it with water.
+Chose force field 6 (*AMBER99SB-ILDN protein, nucleic AMBER94 (Lindorff-Larsen et al...*) and water model 1 (*TIP3P TIP 3-point, recommended*). In fact AMBER99SB and AMBER99-ILDN are identical since the ILDN correction is applied on longer side chains. Next, create a box and fill it with water.
 ```bash
 gmx_mpi_d editconf -f AceAlaNme.gro -o box -c -box 3 3 3
 gmx_mpi_d solvate -cp box -cs -o solvated -p AceAlaNme.top
