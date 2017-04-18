@@ -63,8 +63,7 @@ Finally you can make movies by mencoder:
 mencoder -ovc lavc -lavcopts vcodec=mpeg4:vpass=1:vbitrate=1620000:mbd=2:keyint=132:v4mv:vqmin=3:lumi_mask=0.07:dark_mask=0.10:naq:vqcomp=0.7:vqblur=0.2:mpeg_quant -mf type=png:fps=25 -nosound -o fes.avi mf://fes*.png
 
 mencoder -ovc lavc -lavcopts vcodec=mpeg4:vpass=1:vbitrate=1620000:mbd=2:keyint=132:v4mv:vqmin=3:lumi_mask=0.07:dark_mask=0.10:naq:vqcomp=0.7:vqblur=0.2:mpeg_quant -mf type=png:fps=25 -nosound -o bias.avi mf://bias*.png
-(everything from vcodec=mpeg4:.. to ..:mpeg_quant must not be broken by spaces or new lines, copy and paste this command to a 
 ```
-text editor to make sure it is not broken) or by other software.
+(everything from `vcodec=mpeg4:..` to `..:mpeg_quant` must not be broken by spaces or new lines, copy and paste this command to a text editor to make sure it is not broken) or by other software.
 
 You should obtain movie similar to this one and this one. You can play with hill heights (higher hills may cause crash), hills of height set to zero (standard MD), you can count the number of transitions between minima etc. Happy flying with Flying Gaussian!
