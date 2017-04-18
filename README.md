@@ -14,7 +14,7 @@ gmx_mpi_d solvate -cp box -cs -o solvated -p AceAlaNme.top
 I used two rounds of energy minimization, 20ps MD at constant volume and 30 K and 200ps MD at constant pressure and 300 K. This was followed by 200ps MD at constant volume and 300 K. I ran equilibrations on 8 cores:
 ```bash
 export OMP_NUM_THREADS=1
-gmx_mpi_d grompp -f [em1](https://github.com/spiwokv/FlyingGaussianTutorial/blob/master/mdps/em1.mdp) -c solvated -p AceAlaNme -o em1 -maxwarn 666
+gmx_mpi_d grompp -f em1 -c solvated -p AceAlaNme -o em1 -maxwarn 666
 mpirun -np 8 gmx_mpi_d mdrun -s em1 -o em1 -e em1 -g em1 -c after_em1
 gmx_mpi_d grompp -f em2 -c after_em1 -p AceAlaNme -o em2 -maxwarn 666
 mpirun -np 8 gmx_mpi_d mdrun -s em2 -o em2 -e em2 -g em2 -c after_em2
@@ -25,7 +25,7 @@ mpirun -np 8 gmx_mpi_d mdrun -s mdp1 -o mdp1 -e mdp1 -g mdp1 -c after_mdp1
 gmx_mpi_d grompp -f mdv2 -c after_mdp1 -p AceAlaNme -o mdv2 -maxwarn 666
 mpirun -np 8 gmx_mpi_d mdrun -s mdv2 -o mdv2 -e mdv2 -g mdv2 -c after_mdv2
 ```
-Snapshots of this simulation (sampled every 10 ps) were used as starting structures for the Flying Gaussian method. These snapshots can be retrieved by a simple script (add path before `gmx_mpi_d` if necessary) and run by typing:
+Snapshots of this simulation (sampled every 10 ps) were used as starting structures for the Flying Gaussian method. These snapshots can be retrieved by [a simple script](https://github.com/spiwokv/FlyingGaussianTutorial/blob/master/python/disectit.py) (add path before `gmx_mpi_d` if necessary) and run by typing:
 ```bash
 ./disectit.py
 ```
@@ -40,21 +40,21 @@ done
 mpirun -np 20 gmx_mpi_d mdrun -s mtd1_ -o mtd1_ -e mtd1_ -g mtd1_ /
             -c after_mtd1_ -plumed plumed -multi 20
 ```
-The `plumed.dat` file containsthe definition of Ramachandran dihedrals and the line:
+The [`plumed.dat`](https://github.com/spiwokv/FlyingGaussianTutorial/blob/master/plumed_dat/plumed.dat) file contains the definition of Ramachandran dihedrals and the line:
 ```
 METAD ARG=phi,psi SIGMA=0.3,0.3 HEIGHT=4 PACE=1 WALKERS_MPI FLYING_GAUSSIAN FILE=HILLS LABEL=restraint
 ```
 which invokes the Flying Gaussian method (keyword `FLYING_GAUSSIAN`) with updates of hills in every step (`PACE=1`). It works with MPI parallelization only (`WALKERS_MPI`). Heights of hills are 4 kJ/mol (the bias potential can hypothetically reach 20x4=80 kJ/mol for same CV values of all hills). Increasing of hill heights may lead to over-biasing and crashes, however, higher bias potential can be usually reached by increasing the number of walkers without any problem. Widths are similar to classical metadynamics.
 
-After finishing the simulation create a subdirectory `otfr` for on-the-fly reweighting. In this directory run this script.
+After finishing the simulation create a subdirectory `otfr` for on-the-fly reweighting. In this directory run [this script](https://github.com/spiwokv/FlyingGaussianTutorial/blob/master/python/otfr.py).
 ```bash
 ./otfr.py
 ```
-It will generate files `fes0.txt` to `fes500.txt` with the progress of calculated free energy surface. They contain three columns: phi-bin number, psi-bin number and free energy (free energy of unpopulated bins is set to `maxfe`). They can be visualized by this R script by running:
+It will generate files `fes0.txt` to `fes500.txt` with the progress of calculated free energy surface. They contain three columns: phi-bin number, psi-bin number and free energy (free energy of unpopulated bins is set to `maxfe`). They can be visualized by [this R script](https://github.com/spiwokv/FlyingGaussianTutorial/blob/master/R/getfes.R) by running:
 ```bash
 R --no-save < getfes.R
 ```
-(they start by `fes001.png`). Evolution of the bias potential can be visualized by this script:
+(they start by `fes001.png`). Evolution of the bias potential can be visualized by [this script](https://github.com/spiwokv/FlyingGaussianTutorial/blob/master/R/getbias.R):
 ```bash
 R --no-save < getbias.R
 ```
