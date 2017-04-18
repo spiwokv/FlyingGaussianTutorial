@@ -61,8 +61,8 @@ R --no-save < getbias.R
 Finally you can make movies by mencoder:
 ```bash
 mencoder -ovc lavc -lavcopts vcodec=mpeg4:vpass=1:vbitrate=2160000 -nosound -o fes.mp4 -mf type=png:fps=25 mf://fes*.png
-mencoder -ovc lavc -lavcopts vcodec=mpeg4:vpass=1:vbitrate=2160000 -nosound -o bias.mp4 -mf type=png:fps=25 mf://bias*.pn
+mencoder -ovc lavc -lavcopts vcodec=mpeg4:vpass=1:vbitrate=2160000 -nosound -o bias.mp4 -mf type=png:fps=25 mf://bias*.png
 ```
 or by other software.
 
-You should obtain movie similar to this one and this one. You can play with hill heights (higher hills may cause crash), hills of height set to zero (standard MD), you can count the number of transitions between minima etc. Happy flying with Flying Gaussian!
+You should obtain movie similar to [this one](https://youtu.be/ZCTPh4mIx-E) and [this one](). You can play with hill heights (higher hills may cause crash), hills of height set to zero (standard MD), you can count the number of transitions between minima etc. Happy flying with Flying Gaussian!
