@@ -25,7 +25,7 @@ mpirun -np 8 gmx_mpi_d mdrun -s mdp1 -o mdp1 -e mdp1 -g mdp1 -c after_mdp1
 gmx_mpi_d grompp -f mdv2 -c after_mdp1 -p AceAlaNme -o mdv2 -maxwarn 666
 mpirun -np 8 gmx_mpi_d mdrun -s mdv2 -o mdv2 -e mdv2 -g mdv2 -c after_mdv2
 ```
-Snapshots of this simulation (sampled every 10 ps) were used as starting structures for the Flying Gaussian method. These snapshots can be retrieved by [a simple script](https://github.com/spiwokv/FlyingGaussianTutorial/blob/master/python/disectit.py) (specift path to Gromacs in `path_to_gmx=""` if necessary) and run by typing:
+Snapshots of this simulation (sampled every 10 ps) were used as starting structures for the Flying Gaussian method. These snapshots can be retrieved by [a simple script](https://github.com/spiwokv/FlyingGaussianTutorial/blob/master/python/disectit.py) (specify the path to Gromacs in `path_to_gmx=""` if necessary) and run by typing:
 ```bash
 ./disectit.py
 ```
