@@ -6,7 +6,7 @@ The simulation can start from [this structure of alanine dipeptide](https://gith
 ```bash
 gmx_mpi_d pdb2gmx -f AceAlaNme.pdb -o AceAlaNme -p AceAlaNme
 ```
-Chose force field 6 (*AMBER99SB-ILDN protein, nucleic AMBER94 (Lindorff-Larsen et al...*) and water model 1 (*TIP3P TIP 3-point, recommended*). In fact AMBER99SB and AMBER99-ILDN are identical since the ILDN correction is applied on longer side chains. Next, create a box and fill it with water.
+Chose force field 6 (*AMBER99SB-ILDN protein, nucleic AMBER94 (Lindorff-Larsen et al...*) and water model 1 (*TIP3P TIP 3-point, recommended*). In fact AMBER99SB and AMBER99SB-ILDN are identical since the ILDN correction is applied on longer side chains. Next, create a box and fill it with water.
 ```bash
 gmx_mpi_d editconf -f AceAlaNme.gro -o box -c -box 3 3 3
 gmx_mpi_d solvate -cp box -cs -o solvated -p AceAlaNme.top
