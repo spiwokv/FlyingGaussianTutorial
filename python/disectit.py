@@ -2,8 +2,10 @@
 
 import os
 
+path_to_gmx = ""
+
 for i in range(20):
-  command = "/storage/praha1/home/spiwokv/gromacs_plumed22_movinghills_janka/gromacs_compiled/bin/gmx_mpi_d trjconv -s after_mdp1 -f mdv2 -o frame"
+  command = path_to_gmx + "gmx_mpi_d trjconv -s after_mdp1 -f mdv2 -o frame"
   command = command + str(i)
   command = command + ".gro -b "
   command = command + str(10.0*float(i+1)-0.1)
