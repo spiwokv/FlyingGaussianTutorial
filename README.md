@@ -65,4 +65,4 @@ mencoder -ovc lavc -lavcopts vcodec=mpeg4:vpass=1:vbitrate=2160000 -nosound -o b
 ```
 or by other software.
 
-You should obtain movie similar to [this one](https://youtu.be/ZCTPh4mIx-E) and [this one](https://youtu.be/i2HO1lqf9Ns). You can play with hill heights (higher hills may cause crash), hills of height set to zero (standard MD), you can count the number of transitions between minima etc. Happy flying with Flying Gaussian!
+You should obtain movie similar to [this one](https://youtu.be/ZCTPh4mIx-E) and [this one](https://youtu.be/sTzhulxFoU4). You can play with hill heights (higher hills may cause crash), hills of height set to zero (standard MD), you can count the number of transitions between minima etc. Happy flying with Flying Gaussian!
