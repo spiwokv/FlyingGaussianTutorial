@@ -11,7 +11,7 @@ Chose force field 6 (*AMBER99SB-ILDN protein, nucleic AMBER94 (Lindorff-Larsen e
 gmx_mpi_d editconf -f AceAlaNme.gro -o box -c -box 3 3 3
 gmx_mpi_d solvate -cp box -cs -o solvated -p AceAlaNme.top
 ```
-I used two rounds of energy minimization, 20ps MD at constant volume and 30 K and 200ps MD at constant pressure and 300 K. This was followed by 200ps MD at constant volume and 300 K. I ran equilibrations on 8 cores:
+I used two rounds of energy minimization, 20ps MD at constant volume and 30 K and 200ps MD at constant pressure and 300 K. This was followed by 200ps MD at constant volume and 300 K. I ran equilibrations on 8 cores (Gromacs `mdp` files can be found [here]()):
 ```bash
 export OMP_NUM_THREADS=1
 gmx_mpi_d grompp -f em1 -c solvated -p AceAlaNme -o em1 -maxwarn 666
