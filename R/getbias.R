@@ -44,7 +44,7 @@ bias <- function(t) {
         dy <- (cvtwo[k]-x[j])
         if(dy < -180) {dy<-dy+360}
         if(dy >  180) {dy<-dy-360}
-        bp[length(x)*(i-1)+j] <- bp[length(x)*(i-1)+j] + 5*exp(-(dx*dx+dy*dy)/2/ds/ds)
+        bp[length(x)*(i-1)+j] <- bp[length(x)*(i-1)+j] + 4*exp(-(dx*dx+dy*dy)/2/ds/ds)
       }
     }
   }
