@@ -37,7 +37,7 @@ def onestep(step):
       x = int(float(nxbins)*(walker[i][0]-xmin)/(xmax-xmin))
       y = int(float(nybins)*(walker[i][1]-ymin)/(ymax-ymin))
       pot = walker[i][2]
-      addpop = math.exp(100.0*pot/8.314/temp)
+      addpop = math.exp(1000.0*pot/8.314/temp)
       pop[x][y] = pop[x][y] + addpop
       sumpop = sumpop + addpop
   fes = []
